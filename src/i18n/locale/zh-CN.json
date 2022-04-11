@@ -46,5 +46,11 @@
     "CreateList": "创建列表",
     "listName": "列表名称",
     "listText": "列表文字",
-    "clickToUpload": "点击上传"
+    "clickToUpload": "点击上传",
+    "FinancialManagement": "财务管理",
+    "rechargeRecord": "充值记录",
+    "invoiceRecord": "发票记录",
+    "paymentmethod": "支付方式",
+    "money": "金额",
+    "invoice": "发票"
 }

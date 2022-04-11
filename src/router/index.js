@@ -60,6 +60,22 @@ Vue.use(VueRouter)
 				// which is lazy-loaded when the route is visited.
 				component: () => import(/* webpackChunkName: "PackagePurchase" */ '../views/pendingList/index')
 			},
+			{
+				path: '/financialManagement',
+				name: 'rechargeRecord',
+				// route level code-splitting
+				// this generates a separate chunk (about.[hash].js) for this route
+				// which is lazy-loaded when the route is visited.
+				component: () => import(/* webpackChunkName: "PackagePurchase" */ '../views/financialManagement/rechargeRecord')
+			},
+			{
+				path: '/invoiceRecord',
+				name: 'invoiceRecord',
+				// route level code-splitting
+				// this generates a separate chunk (about.[hash].js) for this route
+				// which is lazy-loaded when the route is visited.
+				component: () => import(/* webpackChunkName: "PackagePurchase" */ '../views/financialManagement/invoiceRecord')
+			},
 		]
 	},
 	{

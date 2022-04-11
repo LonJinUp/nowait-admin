@@ -51,13 +51,13 @@ export default {
                 //         {label: '历史任务', path: ''}
                 //     ]
                 // },
-                // {
-                //     label: '财务管理',
-                //     children: [
-                //         {label: '重置记录', path: ''},
-                //         {label: '申请发票', path: ''}
-                //     ]
-                // }
+                {
+                    label: this.$t('FinancialManagement'),
+                    children: [
+                        {label: this.$t('rechargeRecord'), path: '/financialManagement'},
+                        {label: this.$t('invoiceRecord'), path: '/invoiceRecord'}
+                    ]
+                }
             ]
         }
     }
