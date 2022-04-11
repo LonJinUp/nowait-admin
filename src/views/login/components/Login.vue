@@ -8,23 +8,31 @@
     </div>
 </template>
 <script>
+import {login} from '@/api'
 export default {
     data() {
         return {
             formData: {
-                mobile: '',
+                username: '',
                 password: ''
             },
             config: [
-                {placeholder: this.$t('pleaseEnterPhoneMumber'), key: 'mobile', type: 'text'},
+                {placeholder: this.$t('pleaseEnterPhoneMumber'), key: 'username', type: 'text'},
                 {placeholder: this.$t('pleaseEnterPassword'), key: 'password', type: 'password'}
             ]
         };
     },
     methods: {
         login() {
-            if(this.formData.mobile && this.formData.password){
-
+            if(this.formData.username && this.formData.password){
+                login(this.formData).then(res => {
+                    if(res.code == 1){
+                        this.$store.commit('setUserInfo', res.data)
+                        this.$router.push('/');
+                    }else{
+                        this.$message.error(res.msg);
+                    }
+                })
             }else{
                 this.$message({
                     message: this.$t('mobileAndPassword'),

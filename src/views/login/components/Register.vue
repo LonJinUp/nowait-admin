@@ -8,20 +8,21 @@
     </div>
 </template>
 <script>
+import {register} from '@/api'
 export default {
     data() {
         return {
             formData: {
-                companyName: '',
-                companyPeople: '',
-                mobile: '',
+                username: '',
+                // companyPeople: '',
+                // mobile: '',
                 email: '',
                 password: ''
             },
             config: [
-                {placeholder: this.$t('companyName'), key: 'companyName', type: 'text'},
-                {placeholder: this.$t('companyPeople'), key: 'companyPeople', type: 'text'},
-                {placeholder: this.$t('pleaseEnterPhoneMumber'), key: 'mobile', type: 'text'},
+                {placeholder: this.$t('companyName'), key: 'username', type: 'text'},
+                // {placeholder: this.$t('companyPeople'), key: 'companyPeople', type: 'text'},
+                // {placeholder: this.$t('pleaseEnterPhoneMumber'), key: 'mobile', type: 'text'},
                 {placeholder: this.$t('companyEmail'), key: 'email', type: 'text'},
                 {placeholder: this.$t('pleaseEnterPassword'), key: 'password', type: 'password'}
             ]
@@ -29,8 +30,15 @@ export default {
     },
     methods: {
         register() {
-            if(this.formData.companyName && this.formData.companyPeople && this.formData.mobile && this.formData.email && this.formData.password){
-
+            if(this.formData.username && this.formData.email && this.formData.password){
+                register(this.formData).then(res => {
+                    if(res.code == 1){
+                       this.$message.success(res.msg);
+                        this.$router.push('/');
+                    }else{
+                        this.$message.error(res.msg);
+                    }
+                })
             }else{
                 this.$message({
                     message: this.$t('pleaseEnterForm'),
