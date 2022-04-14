@@ -27,7 +27,7 @@ export default {
             locale: this.$i18n.locale, //使用i18n实例默认定义的语言
             locales: [
                 {
-                    value: "en",
+                    value: "EN",
                     label: "English",
                 },
                 {

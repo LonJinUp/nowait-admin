@@ -10,6 +10,11 @@ const service = axios.create({
 
 service.interceptors.request.use(
     config => {
+      if(config.method === 'post') {
+        // config.data.id =  '16'
+      }else{
+        // config.params.qyid =  '16'
+      }
       // do something before request is sent
       return config
     },
@@ -29,11 +34,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
     response => {
       const res = response.data
-      if (res && res.errorCode === 'IDS-M009') {
-        window.location = "/login"
-      }else{
-        return res
-      }
+      return res
     },
     error => {
           // eslint-disable-next-line

@@ -41,7 +41,7 @@
                     </el-form-item>
 
                     <el-form-item :label="$t('templateName')">
-                        <el-input v-model="form.name"></el-input>
+                        <el-input v-model="form.title"></el-input>
                     </el-form-item>
 
                     <el-form-item :label="$t('TemplateText')">
@@ -62,13 +62,14 @@
             </div>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">{{$t('Cancel')}}</el-button>
-                <el-button type="primary" @click="dialogVisible = false">{{$t('Sure')}}</el-button>
+                <el-button type="primary" @click="sure">{{$t('Sure')}}</el-button>
             </span>
         </el-dialog>
 
     </div>
 </template>
 <script>
+import {addTemplate} from '@/api'
 export default {
     data() {
         return {
@@ -86,7 +87,7 @@ export default {
             ],
             form: {
                 type: '1',
-                name: '',
+                title: '',
                 text: '',
                 images: ''
             },
@@ -105,6 +106,23 @@ export default {
         handleRemove() {
 
         },
+        // 添加模版点击确定
+        sure() {
+            addTemplate(this.form).then(res => {
+                if(res.code==1){
+                    this.$message({
+                        type: 'success',
+                        message: res.msg
+                    })
+                    this.dialogVisible = false
+                }else{
+                    this.$message({
+                        type: 'error',
+                        message: res.msg
+                    })
+                }    
+            })
+        }
     }
 }
 </script>

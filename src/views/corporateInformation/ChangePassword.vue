@@ -18,30 +18,45 @@
     </div>
 </template>
 <script>
+import {updatePassword} from '@/api'
 export default {
     data() {
         return {
             formConfig: [
-                {label: this.$t('OldPassword'), prop: 'oldPassword', type: 'input'},
-                {label: this.$t('NewPassword'), prop: 'newPassword', type: 'input'},
-                {label: this.$t('Repeatpassword'), prop: 'repeatpassword', type: 'input'}
+                {label: this.$t('OldPassword'), prop: 'password', type: 'input'},
+                {label: this.$t('NewPassword'), prop: 'newpwd', type: 'input'},
             ],
             form: {
-                oldPassword: '',
-                newPassword: '',
-                repeatpassword: ''
+                password: '',
+                newpwd: '',
             },
         }
     },
+    created() {
+        var user = JSON.parse(window.localStorage.getItem('user'))
+        this.form.username = user.username
+    },
     methods: {
         changeInfo() {
-            if(this.form.oldPassword && this.form.newPassword && this.form.repeatpassword) {
-                
+            if(this.form.password && this.form.newpwd) {
+                updatePassword(this.form).then(res=>{
+                    if(res.code == '1'){
+                        this.$message({
+                            message: res.msg,
+                            type: 'success'
+                        })
+                    }else{
+                        this.$message({
+                            message: res.msg,
+                            type: 'error'
+                        })
+                    }
+                })
             } else {
-                // this.$message({
-                //     message: this.$t('pleaseFillInTheInformation'),
-                //     type: 'warning'
-                // })
+                this.$message({
+                    message: this.$t('pleaseFillInTheInformation'),
+                    type: 'warning'
+                })
             }
         }
     }

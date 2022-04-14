@@ -52,5 +52,6 @@
     "invoiceRecord": "发票记录",
     "paymentmethod": "支付方式",
     "money": "金额",
-    "invoice": "发票"
+    "invoice": "发票",
+    "pleaseFillInTheInformation": "请填写信息"
 }

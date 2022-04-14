@@ -9,6 +9,14 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
+
+
+var user = JSON.parse(window.localStorage.getItem('user')) || ''
+var userinfo = JSON.parse(window.localStorage.getItem('userinfo')) || ''
+if (!user || !userinfo) {
+    window.location.hash = '#/login'
+}
+
 new Vue({
   router,
   store,

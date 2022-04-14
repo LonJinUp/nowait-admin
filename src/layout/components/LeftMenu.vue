@@ -9,7 +9,7 @@
             active-text-color="#409EFF">
             <el-submenu :index="index+''" v-for="(item,index) in menu" :key="index">
                 <template slot="title">
-                    <i class="el-icon-location"></i>
+                    <i class="el-icon-menu"></i>
                     <span>{{item.label}}</span>
                 </template>
                 <el-menu-item-group>

@@ -27,7 +27,9 @@ export default {
             if(this.formData.username && this.formData.password){
                 login(this.formData).then(res => {
                     if(res.code == 1){
+                        window.localStorage.setItem('user', JSON.stringify(this.formData))
                         this.$store.commit('setUserInfo', res.data)
+                        window.localStorage.setItem('userinfo', JSON.stringify(res.data))
                         this.$router.push('/');
                     }else{
                         this.$message.error(res.msg);
@@ -39,7 +41,7 @@ export default {
                     type: 'warning'
                 })
             }
-        }
+        },
     }
 };
 </script>

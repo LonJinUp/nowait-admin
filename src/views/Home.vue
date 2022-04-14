@@ -8,7 +8,6 @@
 				</el-card>
             </el-col>
         </el-row>
-		{{$t('loginText')}}
     </div>
 </template>
 <script>
